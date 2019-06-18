@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>图片相框展示</title>
+    <style>
+        #tu{
+            width: 200px;
+            height: 50px;
+            border: 1px dashed #cccccc;
+            text-align: center;
+            line-height: 50px;
+        }
+        #output{
+            float: left;
+            margin: 10px;
+            text-align: center;
+            width: 500px;
+        }
+        .photoframe{
+            background-image: url("./img/xiao.jpg") no-repeat;
+            width: 500px;
+            height: 438px;
+            text-align: center;
+            float: left;
+        }
+        img{
+            vertical-align: middle;
+        }
+        .block{
+            width: 0;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h3>H5图片相框展示</h3>
+    <hr>
+    <div id="tu" ondragover="allowDrop(event)" ondrop="fileDrop(e)">请把图片放进拖放至此处</div>
+    <br>
+    <div id="output"></div>
+</body>
+</html>
+<script>
+    function allowDrop(event){
+        event.preventDefault();
+    }
+    function fileDrop(e){
+        e.preventDefault();
+        let output = document.getElementById("output");
+        output.innerHTML = "";
+        let files = e.dataTransfer.files;
+        for(let i=0,f;f = files[i];i++){
+            let imgURL = window.wedbitURL.createObjectURL(f);
+            let img = document.createElement("img");
+            img.setAttribute("src",imgURL);
+            img.setAttribute("width","330");
+            img.setAttribute("height","270");
+            let photo = document.createElement("div");
+            photo.setAttribute("class","photoframe");
+            photo.appendChild(img);
+            let img2 = document.createElement('img');
+            img2.setAttribute("class","block");
+            photo.appendChild(img2);
+            output.appendChild(photo);
+            let status = document.createElement('div');
+            let lastModified = f.lastModifiedDate;
+            let lastModifiedStr = lastModified ? lastModified.toLocaleDateString()+''+lastModified.toLocaleTimeString() : 'n/a';
+            status.innerHTML = '<strong>'+f.name+'</strong>('+(f.type || 'n/a')+')<br>大小：'+f.size+'字节<br>修改时间：'+lastModifiedStr;
+            output.appendChild(status);
+        }
+    }
+</script>

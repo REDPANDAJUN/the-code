@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>用户注册页面</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        body{
+            background-color: #ccc;
+        }
+        .container{
+            background-color: #fff;
+            color: #2289F0;
+            padding: 15px;
+            margin: 100px auto 0px;
+            width: 600px;
+            text-align: center;
+            font-family: "微软雅黑 Light";
+            box-shadow: 10px 10px 15px black;
+        }
+        hr{
+            width: 80%;
+            border: 1px solid #2289F0;
+            margin: 15px auto;
+        }
+        input{
+            width: 180px;
+            height: 20px;
+            margin: 5px;
+            font-size: 16px;
+            font-family: "微软雅黑 Light";
+        }
+        button{
+            width: 120px;
+            height: 40px;
+            background-color: #2289F0;
+            border: 0px;
+            color: white;
+            margin: 10px;
+            font-size: 18px;
+            font-family: "微软雅黑 Light";
+            font-weight: bold;
+        }
+        button:hover{
+            background-color: #0068d0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>用户注册页面</h1>
+        <hr>
+        <form action="URL" method="POST" role="form" autocomplete="on">
+            <div class="form-group">
+                <label>用户名：
+                    <input type="text" placeholder="请输入用户名" name="username" required>
+                </label>
+                <br>
+                <label>密&nbsp;&nbsp;&nbsp;码：
+                    <input type="password" placeholder="请输入密码" name="password1" required>
+                </label>
+                <br>
+                <label>确&nbsp;&nbsp;&nbsp;认：
+                    <input type="password" placeholder="请再次输入密码" name="password2" required>
+                </label>
+                <br>
+                <label>姓&nbsp;&nbsp;&nbsp;名：
+                    <input type="text" placeholder="请输入真实姓名" name="truename" required>
+                </label>
+                <br>
+                <label>邮&nbsp;&nbsp;&nbsp;箱：
+                    <input type="email" placeholder="请输入电子邮箱" name="emaill" required>
+                </label>
+            </div>
+            <button type="submit">提交注册</button>
+        </form>
+        
+    </div>
+</body>
+</html>

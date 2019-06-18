@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>拖放API</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        div#container {
+            border: 1px solid #ccc;
+            width: 300px;
+            height: 250px;
+            float: left;
+        }
+
+        div#recycle {
+            width: 200px;
+            height: 200px;
+            float: left;
+            text-align: center;
+            background-color: red;
+            margin: 30px;
+            color: #fff;
+            line-height: 200px;
+        }
+
+        .folder {
+            color: #fff;
+            text-align: center;
+            float: left;
+            margin: 20px;
+            background-color: #333;
+            width: 100px;
+            height: 80px;
+            line-height: 80px;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>H5拖放API</h3>
+    <div id="container">
+        <div id="file1" class="folder" draggable="true" ondragstart="drag(event)">文件1</div>
+        <div id="file2" class="folder" draggable="true" ondragstart="drag(event)">文件2</div>
+        <div id="file3" class="folder" draggable="true" ondragstart="drag(event)">文件3</div>
+        <div id="file4" class="folder" draggable="true" ondragstart="drag(event)">文件4</div>
+    </div>
+    <div id="recycle"  ondragover="allowDrop(event)" ondrop="drop(event)">
+        假装自己是装东西的盒子
+    </div>
+</body>
+
+</html>
+
+<script>
+    function drag(event) {
+        event.dataTransfer.setData("text/plain", event.target.id);
+    }
+
+    function allowDrop(event) {
+        event.preventDefault();
+    }
+
+    function drop(event) {
+        event.preventDefault();
+        let id = event.dataTransfer.getData("text");
+        let folder = document.getElementById(id);
+        document.getElementById("container").removeChild(folder);
+    }
+</script>
